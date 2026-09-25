@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 const corsOptions = {
-    origin:'https://chat-app-seven-neon-15.vercel.app/',
+    origin:'https://front-end-teal-eta.vercel.app/',
     methods:['GET','POST','PUT','DELETE'],
     allowedHeaders: ['Content-Type'],
     credentials: true,
