@@ -5,6 +5,8 @@ import messageRoutes from "./routes/message.route.js";
 import cookieParser from "cookie-parser";
 const app = express();
 
+app.set("trust proxy", 1);
+
 const corsOptions = {
     origin:['http://localhost:5173'
         ,'https://front-end-teal-eta.vercel.app'],
