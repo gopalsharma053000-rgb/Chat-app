@@ -47,6 +47,8 @@ export const signup = async(req,res)=>{
         res.cookie("token",token,{
             maxAge: 7 * 24 * 60 * 60 * 1000,
             httpOnly:true, //prevent xss attacks:cross-site scripting
+            sameSite:"none",
+            secure:true,
             });
 
         res.status(201).json({
