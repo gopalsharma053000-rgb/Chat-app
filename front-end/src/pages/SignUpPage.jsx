@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthStore } from "../store/useAuthStore.js";
-import { MessageCircleIcon, LockIcon, MailIcon, UserIcon, LoaderIcon,Eye,EyeIcon} from 'lucide-react';
+import { MessageCircleIcon, LockIcon, MailIcon, UserIcon, LoaderIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
@@ -8,7 +8,7 @@ const SignUpPage = () => {
   const [formData, setFormData] = useState({ fullName: "", email: "", password: "" });
   const { signup, isSigningUp } = useAuthStore();
 
-  const handleSubmit = (e) => { 
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     signup(formData);
@@ -19,7 +19,7 @@ const SignUpPage = () => {
       <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]">
         <div className='w-full flex flex-col md:flex-row'>
           {/* FROM COLUMN-LEFT SIDE */}
-          <div className='md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-700/20'>
+          <div className='md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-700/20 bg-gradient-to-bl from-slate-800/20 to-transparent'>
             <div className='w-full max-w-md'>
               {/* HEADING TEXT */}
               <div className='text-center mb-8'>
@@ -69,27 +69,50 @@ const SignUpPage = () => {
                   <div className="relative w-full">
                     <LockIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 size-5 pointer-events-none" />
                     <input
-                  type='password'
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  placeholder="Password"
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-11 pr-11 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm"
-                />
+                      type='password'
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                      placeholder="Password"
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-11 pr-11 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm"
+                    />
                   </div>
-                  </div>
-                  {/* submit button */}
-                  <button className='auth-btn' type='submit' disabled={isSigningUp}>
-                    {isSigningUp ? (
-                      <LoaderIcon className='w-full h-5 animate-spin text-center'/>
-                    ) : (
-                      "Create Account"
-                    )}
-                  </button>
+                </div>
+                {/* submit button */}
+                <button className='auth-btn' type='submit' disabled={isSigningUp}>
+                  {isSigningUp ? (
+                    <LoaderIcon className='w-full h-5 animate-spin text-center' />
+                  ) : (
+                    "Create Account"
+                  )}
+                </button>
               </form>
               <div className='mt-6 text-center'>
                 <Link to="/login" className='auth-link'>
-                Already have an account? Login
+                  Already have an account? Login
                 </Link>
+              </div>
+            </div>
+
+          </div>
+          {/*From Column-Right side*/}
+          <div className="hidden md:flex md:w-1/2 flex-col items-center justify-center p-8 bg-gradient-to-bl from-slate-800/30 to-transparent relative overflow-hidden">
+            <div className="flex flex-col items-center justify-center max-w-lg w-full text-center">
+              <div className="w-full flex items-center justify-center mb-6">
+                <img
+                  src="/signup.png"
+                  alt="People using mobile devices"
+                  className="w-full max-h-[380px] lg:max-h-[440px] object-contain drop-shadow-xl"
+                />
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-xl lg:text-2xl font-semibold text-cyan-400">
+                  Start Your Journey Today
+                </h3>
+                <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                  <span className='auth-badge'>Free</span>
+                  <span className='auth-badge'>Easy Setup</span>
+                  <span className='auth-badge'>Private</span>
+                </div>
               </div>
             </div>
           </div>
