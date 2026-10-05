@@ -56,7 +56,7 @@ const ProfileHeader = () => {
           <p className="text-slate-400 ml-2 text-sm">Online</p>
         </div>
         {/* Button */}
-        <div className="flex ml-6 items-center hover:bg-slate-400/45 hover:h-7 hover:w-7 hover:rounded-full">
+        <div className="flex ml-6 items-center">
           {/* Logout btn */}
           <button className="text-slate-400 hover:text-slate-200 active:bg-slate-900 p-1 transition-colors"
             onClick={logout}
