@@ -14,7 +14,7 @@ const LoginPage = () => {
 
     login(formData);
   };
-
+  
   return (
     <div className='w-full flex items-center justify-center p-4 bg-slate-950'>
       <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]">
