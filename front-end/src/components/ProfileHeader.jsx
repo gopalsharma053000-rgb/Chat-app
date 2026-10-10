@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { LogOutIcon, VolumeOffIcon, Volume2Icon } from "lucide-react";
+import { LogOutIcon, VolumeOffIcon, Volume2Icon, TubeLotion } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
 
@@ -9,8 +9,13 @@ const ProfileHeader = () => {
   const { logout, authUser, updateProfile } = useAuthStore();
   const { isSoundEnabled, toggleSound } = useChatStore();
   const [selectedImg, setSelectedImg] = useState(null);
+  const [btnbox, setBtnBox] = useState(false);
 
   const fileInputRef = useRef(null);
+
+  const cancelBtn = (e) => {
+    setBtnBox(false);
+  }
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -90,14 +95,43 @@ const ProfileHeader = () => {
             )}
           </button>
 
-          {/* Logout Btn */}
           <button
+            type="button"
             className="text-slate-400 hover:text-red-400 p-1.5 rounded-lg hover:bg-slate-800 transition-colors"
-            onClick={logout}
+            onClick={() => setBtnBox(true)}
             title="Logout"
           >
             <LogOutIcon className="size-5" />
           </button>
+
+          {/* 2. Logout Confirmation Dialog/Modal */}
+          {btnbox && (
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+              <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl max-w-sm w-full text-center space-y-4 animate-in fade-in zoom-in duration-200">
+                <h4 className="font-semibold text-lg text-slate-100 leading-snug">
+                  Are you sure you want to <br /> Logout?
+                </h4>
+
+                <div className="flex items-center justify-center gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={cancelBtn}
+                    className="px-4 py-2 text-sm font-medium text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-xl transition-colors flex-1"
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={logout}
+                    className="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-xl transition-colors flex-1"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

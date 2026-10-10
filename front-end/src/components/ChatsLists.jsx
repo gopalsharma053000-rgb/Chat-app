@@ -22,7 +22,7 @@ const ChatsLists = () => {
       className="bg-cyan-500/10 p-4 rounded-lg cursor-pointer hover:bg-cyan-500/20 transition-colors"
       onClick={()=> setSelectedUser(chat)}
       >
-        <div className="felx items-center gap-3">
+        <div className="flex items-center gap-3">
           <div className={`avatar-online`}>
             <div className="size-12 rounded-full">
               <img src={chat.profilePic || "/avatar.png"} alt={chat.fullName} />
@@ -36,5 +36,5 @@ const ChatsLists = () => {
   )
 }
 
-export default ChatsLists
+export default ChatsLists;
 
